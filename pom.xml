@@ -13,7 +13,6 @@
 	<name>Explore With Me</name>
 	<modules>
 		<module>stat</module>
-		<module>main-service</module>
 	</modules>
 
 	<groupId>ru.practicum</groupId>
@@ -47,10 +46,6 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<optional>true</optional>
-			</dependency>
-			<dependency>
-				<groupId>jakarta.validation</groupId>
-				<artifactId>jakarta.validation-api</artifactId>
 			</dependency>
 		</dependencies>
 
