@@ -1,7 +1,9 @@
 package ru.practicum.event.controller;
 
+
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +26,7 @@ public class PrivateEventController {
     @PostMapping("/{userId}/events")
     @ResponseStatus(HttpStatus.CREATED)
     public EventDtoPrivate addEvent(@PathVariable("userId") long userId,
-                                    @RequestBody NewEventRequest request) {
+                                    @RequestBody @Valid NewEventRequest request) {
         log.info("Сохранение мероприятия");
         return eventService.addEvent(userId, request);
     }
