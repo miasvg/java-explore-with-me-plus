@@ -110,10 +110,12 @@ public class EventRequestServiceImpl implements EventRequestService {
         if (!eventRequest.getRequester().getId().equals(userId)) {
             throw new NotValidUserException(userId);
         }
-        eventRequest.setStatus(Status.CANCELED);
-        EventRequestDto eventRequestDto = mapToEventRequestDto(eventRequestRepository.save(eventRequest));
-        eventRequestRepository.flush();
-        return eventRequestDto;
+        int i = eventRequestRepository.updateStatus(requestId, Status.CANCELED);
+        if (i == 1) {
+            log.info("Заявка отменена");
+            eventRequest.setStatus(Status.CANCELED);
+        }
+        return mapToEventRequestDto(eventRequest);
     }
 
     @Transactional
@@ -139,7 +141,7 @@ public class EventRequestServiceImpl implements EventRequestService {
         EventRequestUpdateResult result = EventRequestUpdateResult.builder().build();
         List<Long> idForConfirmed = new ArrayList<>();
         List<Long> idForRejected = new ArrayList<>();
-        String stat = Status.valueOf(updateDto.getStatus()).toString();
+        String stat = updateDto.getStatus();
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User", userId));
@@ -158,7 +160,7 @@ public class EventRequestServiceImpl implements EventRequestService {
             throw new RequestModerationException(eventId, "Можно принимать заявки только в статусе ожидания");
         }
 
-        if (stat.equals("REJECTED")) {
+        if (stat.equals("rejected")) {
             idForRejected = requests.stream()
                     .map(EventRequest::getId)
                     .toList();
