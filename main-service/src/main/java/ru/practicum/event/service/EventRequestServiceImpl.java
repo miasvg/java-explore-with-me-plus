@@ -177,6 +177,7 @@ public class EventRequestServiceImpl implements EventRequestService {
         }
 
         int checkLimit = limit - confirmed;
+
         log.info("Вычисляем количество свободных мест {}", checkLimit);
 
         if (checkLimit > 0) {
@@ -192,18 +193,20 @@ public class EventRequestServiceImpl implements EventRequestService {
                         .map(EventRequest::getId)
                         .toList();
                 updateStatusAllRequest(idForRejected, Status.REJECTED);
+            } else {
+                idForConfirmed = requests.stream().map(EventRequest::getId).toList();
+                updateStatusAllRequest(idForConfirmed, Status.CONFIRMED);
             }
-        } else {
-            idForConfirmed = requests.stream().map(EventRequest::getId).toList();
-            updateStatusAllRequest(idForConfirmed, Status.CONFIRMED);
         }
 
         if (!idForConfirmed.isEmpty()) {
             result.setConfirmedRequests(findAllByListIds(idForConfirmed));
+            result.setRejectedRequests(List.of());
             updateConfirmedRequest(event, idForConfirmed.size());
         }
         if (!idForRejected.isEmpty()) {
             result.setRejectedRequests(findAllByListIds(idForRejected));
+            result.setConfirmedRequests(List.of());
         }
         return result;
     }
