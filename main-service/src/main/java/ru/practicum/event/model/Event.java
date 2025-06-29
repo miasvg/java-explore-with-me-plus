@@ -30,15 +30,15 @@ public class Event {
     @Column(name = "title", nullable = false)
     String title;
 
-    //краткая аннотация
+
     @Column(name = "annotation")
     String annotation;
 
-    //полное описание
+
     @Column(name = "description", nullable = false)
     String description;
 
-    //дата мероприятия
+
     @Column(name = "event_date", nullable = false)
     LocalDateTime eventDate;
 
@@ -54,7 +54,7 @@ public class Event {
     @Column(name = "paid")
     Boolean paid;
 
-    //лимит участников, default = 0, при значении 0 количество не ограничено
+
     @Column(name = "participant_limit")
     int participantLimit;
 
