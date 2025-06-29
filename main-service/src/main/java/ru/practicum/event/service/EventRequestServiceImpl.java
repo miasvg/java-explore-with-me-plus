@@ -110,12 +110,10 @@ public class EventRequestServiceImpl implements EventRequestService {
         if (!eventRequest.getRequester().getId().equals(userId)) {
             throw new NotValidUserException(userId);
         }
-        int i = eventRequestRepository.updateStatus(requestId, Status.CANCELED);
-        if (i == 1) {
-            log.info("Заявка отменена");
-            eventRequest.setStatus(Status.CANCELED);
-        }
-        return mapToEventRequestDto(eventRequest);
+        eventRequest.setStatus(Status.CANCELED);
+        EventRequestDto eventRequestDto = mapToEventRequestDto(eventRequestRepository.save(eventRequest));
+        eventRequestRepository.flush();
+        return eventRequestDto;
     }
 
     @Transactional
