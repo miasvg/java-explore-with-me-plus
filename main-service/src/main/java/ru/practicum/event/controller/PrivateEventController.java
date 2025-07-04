@@ -105,7 +105,7 @@ public class PrivateEventController {
     }
 
     @GetMapping("/comments/{eventId}")
-    public List<CommentDto> getEventComments(@PathVariable Long userId,
+    public List<CommentDto> getEventComments(@PathVariable("userId") Long userId,
                                              @PathVariable Long eventId) {
         log.info("Получение всех комментариев для мероприятия id = {}", eventId);
         return commentService.getCommentsByEvent(eventId);

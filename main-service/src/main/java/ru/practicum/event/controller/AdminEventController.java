@@ -80,7 +80,7 @@ public class AdminEventController {
         return commentService.getCommentWithParamAdmin(commentSearchParam, page);
     }
 
-    @PatchMapping("/comments/{commentId}")
+    @PatchMapping("/comments")
     public List<CommentDto> updateCommentState(@Valid @RequestBody CommentUpdateRequestDto request) {
         log.info("Публикация комментариев в Админ API");
         return commentService.updateCommentState(request);
