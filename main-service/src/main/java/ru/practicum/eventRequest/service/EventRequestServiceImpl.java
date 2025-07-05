@@ -1,4 +1,4 @@
-package ru.practicum.event.service;
+package ru.practicum.eventRequest.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -7,16 +7,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.event.dto.EventRequestDto;
-import ru.practicum.event.dto.EventRequestUpdateDto;
-import ru.practicum.event.dto.EventRequestUpdateResult;
-import ru.practicum.event.mapper.EventRequestMapper;
+import ru.practicum.eventRequest.dto.EventRequestDto;
+import ru.practicum.eventRequest.dto.EventRequestUpdateDto;
+import ru.practicum.eventRequest.dto.EventRequestUpdateResult;
+import ru.practicum.eventRequest.mapper.EventRequestMapper;
 import ru.practicum.event.model.Event;
-import ru.practicum.event.model.EventRequest;
+import ru.practicum.eventRequest.model.EventRequest;
 import ru.practicum.event.model.State;
-import ru.practicum.event.model.Status;
+import ru.practicum.eventRequest.model.Status;
 import ru.practicum.event.repository.EventRepository;
-import ru.practicum.event.repository.EventRequestRepository;
+import ru.practicum.eventRequest.repository.EventRequestRepository;
 import ru.practicum.exeption.ConflictException;
 import ru.practicum.exeption.NotFoundException;
 import ru.practicum.exeption.NotValidUserException;
@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static ru.practicum.event.mapper.EventRequestMapper.mapToEventRequestDto;
+import static ru.practicum.eventRequest.mapper.EventRequestMapper.mapToEventRequestDto;
 
 @Slf4j
 @Service

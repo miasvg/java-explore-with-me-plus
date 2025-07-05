@@ -1,7 +1,7 @@
-package ru.practicum.event.mapper;
+package ru.practicum.eventRequest.mapper;
 
-import ru.practicum.event.dto.EventRequestDto;
-import ru.practicum.event.model.EventRequest;
+import ru.practicum.eventRequest.dto.EventRequestDto;
+import ru.practicum.eventRequest.model.EventRequest;
 
 public class EventRequestMapper {
 

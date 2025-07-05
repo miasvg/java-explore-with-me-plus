@@ -19,6 +19,8 @@ import ru.practicum.event.model.State;
 import ru.practicum.event.model.StateAction;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.event.repository.ViewsRepository;
+import ru.practicum.eventRequest.dto.NewEventRequest;
+import ru.practicum.eventRequest.dto.UpdateEventRequest;
 import ru.practicum.exeption.ConflictException;
 import ru.practicum.exeption.InvalidRequestException;
 import ru.practicum.exeption.NotFoundException;
@@ -129,7 +131,6 @@ public class EventServiceImpl implements EventService {
         log.info("Получаем все опубликованные мероприятия для пользователя id = {}: размер списка: {}, " +
                 "список меропритий: {}", userId, events.getSize(), events.getContent());
         return events.stream()
-                .sequential()
                 .map(EventMapper::mapToShortDto)
                 .toList();
     }

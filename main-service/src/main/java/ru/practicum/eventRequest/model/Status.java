@@ -1,4 +1,4 @@
-package ru.practicum.event.model;
+package ru.practicum.eventRequest.model;
 
 public enum Status {
     //Заявка ожидает ответа от организатора

@@ -1,4 +1,4 @@
-package ru.practicum.category.model;
+package ru.practicum.category.dto;
 
 //потом перенесем в отдельный модуль все дто
 // в спеке это NewCategoryDto

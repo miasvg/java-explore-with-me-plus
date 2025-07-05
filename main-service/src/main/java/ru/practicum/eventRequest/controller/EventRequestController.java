@@ -1,11 +1,11 @@
-package ru.practicum.event.controller;
+package ru.practicum.eventRequest.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.event.dto.EventRequestDto;
-import ru.practicum.event.service.EventRequestService;
+import ru.practicum.eventRequest.dto.EventRequestDto;
+import ru.practicum.eventRequest.service.EventRequestService;
 
 import java.util.List;
 
